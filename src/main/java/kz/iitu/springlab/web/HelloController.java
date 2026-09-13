@@ -29,6 +29,7 @@ public class HelloController {
         );
     }
 
+    // Individual assignment - Variant 7
     @GetMapping("/wordcount")
     public WordCount wordCount(@RequestParam(defaultValue = "") String text) {
         String trimmed = text.trim();
