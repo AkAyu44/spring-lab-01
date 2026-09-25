@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+app:
+  mail:
+    enabled: false
+    retry-count: 1
+
+  export:
+    formats:
+      - JSON
+    max-rows: 1000
+
+logging:
+  level:
+    kz.iitu: DEBUG
