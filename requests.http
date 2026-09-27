@@ -1,0 +1,25 @@
+### Find one item
+GET http://localhost:8080/api/lab4/item/5
+
+### Find all items
+GET http://localhost:8080/api/lab4/items?limit=5
+
+### Remove item
+DELETE http://localhost:8080/api/lab4/item/5
+
+### Test exception
+DELETE http://localhost:8080/api/lab4/item/0
+
+### Proxy info
+GET http://localhost:8080/api/lab4/proxy
+
+### Self-invocation
+GET http://localhost:8080/api/lab4/remove-twice/5
+
+### Self-invocation after fix
+GET http://localhost:8080/api/lab4/remove-twice/5
+
+### Proxy info
+GET http://localhost:8080/api/lab4/proxy
+
+git add .
