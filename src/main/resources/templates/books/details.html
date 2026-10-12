@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.title}">Book</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<div th:replace="~{fragments/layout :: navbar('books', ${'/books/' + book.id})}"></div>
+
+<main class="page">
+<h1 th:text="${book.title}">Effective Java</h1>
+<dl class="details">
+    <dt th:text="#{book.author}">Author</dt><dd th:text="${book.author}">Joshua Bloch</dd>
+    <dt th:text="#{book.year}">Year</dt><dd th:text="${book.year}">2018</dd>
+    <dt th:text="#{book.genre}">Genre</dt>
+    <dd th:text="${book.genre} ? #{'genre.' + ${book.genre}} : '—'">PROGRAMMING</dd>
+    <dt th:text="#{book.published}">Published</dt>
+    <dd th:text="${book.publishedOn} ? ${#temporals.format(book.publishedOn, 'd MMMM yyyy')} : '—'">27 December 2017</dd>
+    <dt th:text="#{book.available}">Available</dt>
+    <dd th:text="${book.available} ? #{yes} : #{no}">yes</dd>
+</dl>
+<p><a th:href="@{/books}" th:text="#{error.back}">Back to the catalogue</a></p>
+</main>
+</body>
+</html>

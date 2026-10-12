@@ -2,21 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Catalogue</title>
+    <title th:text="#{book.list}">Catalogue</title>
     <link rel="stylesheet" th:href="@{/css/app.css}">
 </head>
 <body>
+<div th:replace="~{fragments/layout :: navbar('books', '/books')}"></div>
+
 <main class="page">
-<h1>Catalogue</h1>
+<div class="flash" th:if="${addedTitle}" th:text="#{book.added(${addedTitle})}">
+    Book «...» has been added
+</div>
+
+<h1 th:text="#{book.list}">Catalogue</h1>
+<p class="muted" th:text="#{books.count(${#lists.size(books)})}">Books found: 3</p>
+
 <table class="books">
-    <tr><th>#</th><th>Title</th><th>Author</th><th>Year</th></tr>
+    <tr>
+        <th>#</th>
+        <th th:text="#{book.title}">Title</th>
+        <th th:text="#{book.author}">Author</th>
+        <th th:text="#{book.year}">Year</th>
+        <th th:text="#{book.genre}">Genre</th>
+        <th th:text="#{book.published}">Published</th>
+        <th th:text="#{book.available}">Available</th>
+    </tr>
     <tr th:each="b : ${books}">
         <td th:text="${b.id}">1</td>
-        <td th:text="${b.title}">Effective Java</td>
+        <td><a th:href="@{/books/{id}(id=${b.id})}" th:text="${b.title}">Effective Java</a></td>
         <td th:text="${b.author}">Joshua Bloch</td>
         <td th:text="${b.year}">2018</td>
+        <td th:text="${b.genre} ? #{'genre.' + ${b.genre}} : '—'">PROGRAMMING</td>
+        <td th:text="${b.publishedOn} ? ${#temporals.format(b.publishedOn, 'd MMMM yyyy')} : '—'">27 December 2017</td>
+        <td th:text="${b.available} ? #{yes} : #{no}">yes</td>
     </tr>
 </table>
+
+<p><a class="button" th:href="@{/books/new}" th:text="#{nav.new}">New book</a></p>
 </main>
 </body>
 </html>

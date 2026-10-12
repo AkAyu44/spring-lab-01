@@ -4,7 +4,6 @@ import java.util.List;
 
 import kz.iitu.springlab.domain.Book;
 import kz.iitu.springlab.service.BookService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,7 @@ public class BookRestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Book> one(@PathVariable long id) {
-        return ResponseEntity.of(service.findById(id));
+    public Book one(@PathVariable long id) {
+        return service.findById(id);       // BookNotFoundException -> ApiExceptionHandler
     }
 }
