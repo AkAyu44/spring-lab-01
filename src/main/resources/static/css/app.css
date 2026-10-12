@@ -1,0 +1,8 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: #f4f6f9; color: #1f2933; }
+.page { max-width: 760px; margin: 32px auto; background: #fff; padding: 28px 32px; border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+h1 { margin-top: 0; color: #1d3c6e; }
+table.books { width: 100%; border-collapse: collapse; }
+table.books th, table.books td { padding: 8px 10px; border-bottom: 1px solid #e3e8ef; text-align: left; }
+table.books th { background: #eef2f8; }
